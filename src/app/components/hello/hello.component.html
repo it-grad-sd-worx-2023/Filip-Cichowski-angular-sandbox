@@ -1,0 +1,35 @@
+<p>hello works!</p>
+<!-- .container.my-4>.row>.col*2 -->
+<div class="container my-4">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <img src="http://placekitten.com/200/300" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <input type="text" class="form-control" #inputName> <!--template reference-->
+                    <p class="class-text">{{myName}}</p>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <a (click)="updateName(inputName.value)" class="btn btn-primary">Update Name</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="http://placekitten.com/300/200" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <!--we don't need to update the variable, it's done in the background 
+                but we cannot do stuff to the value before assigning it like template reference-->
+                    <input type="text" class="form-control" [(ngModel)]="catName">
+                    <!--template reference-->
+                    <p class="class-text">{{catName}}</p>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
