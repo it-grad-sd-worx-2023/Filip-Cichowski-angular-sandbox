@@ -1,0 +1,21 @@
+<div class="container my-5">
+  <div class="card">
+    <div class="card-header">Welcome</div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-1">
+          <p>Theme:</p>
+        </div>
+        <div class="col">
+          <select name="" id="" class="form-control" [(ngModel)] ="selectedTheme" (change)="updatedTheme()">
+            <option value="dark">Dark</option>
+            <option value="blue">Blue</option>
+            <option value="danger">Danger</option>
+            <option value="yellow">Yellow</option>
+            <option value="custom-filip-theme">Custom Filip Theme</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+      <button (click)="toggleCard()" class="btn btn-primary" *ngIf="!showCard">
+        <i class="fa fa-eye"></i>
+        Toggle Button 1
+      </button>
+      <button (click)="toggleCard()" class="btn btn-primary" *ngIf="showCard">
+        <i class="fa fa-eye-slash"></i>
+        Toggle Button
+      </button>
+    </div>
+
+  <div class="card mb-3">
+      <div class="card-body">
+          <div class="input-group">
+              <span (click)="searchCar()" class="input-group-text">
+                  <i class="fa fa-search"></i>
+              </span>
+              <input [(ngModel)]="searchText" (keyup)="searchCar()" type="text" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="Search Car">
+              <span (click)="clearSearch()" class="input-group-text">
+                  <i class="fa fa-times"></i>
+              </span>
+            </div>
+
+
+      </div>
+  </div>
+  <div class="card-container mb-5" *ngIf="showCard">
+      <div class="row row-cols-3 g-4" >
+          <div class="col" *ngFor="let car of filteredCarList;let i=index">
+              <div class="card h-100" [ngClass]="{'bg-success':!(i%2), 'bg-danger': i%2}">
+                  <img [src]="car.image_car" class="card-img-top" alt={{car.name}}>
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      {{car.name}}
+                    <app-modal [item]="car"></app-modal>
+                    </h5>
+                    <p class="card-text">{{car.desc_excerpt}}</p>
+                    <ng-template #btnDelete>
+                      <p>this is a <span class="text-danger"> delete </span> button. </p>
+                    </ng-template>
+                    <a  (click)="deleteCar(car.ref)"  [tooltip]="btnDelete" class="btn btn-danger">Delete</a>
+                  </div>
+                </div>
+          </div>
+      </div>
+  </div>
+  <div class="table-container mb-5" *ngIf="showCard2">
+    <div class="row">
+      <div class="col">
+        <button (click)="toggleCard()" class="btn btn-primary" *ngIf="!showCard2">
+          <i class="fa fa-eye"></i> Toggle Button
+        </button>
+        <button (click)="toggleCard()" class="btn btn-primary" *ngIf="showCard2">
+          <i class="fa fa-eye-slash"></i> Toggle Button
+        </button>
+      </div>
+      <table class="table">
+
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Body Type</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let car of carList; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{car.name}}</td>
+              <td>{{car.body_type}}</td>
+              <td>{{car.currency}} {{car.price}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>

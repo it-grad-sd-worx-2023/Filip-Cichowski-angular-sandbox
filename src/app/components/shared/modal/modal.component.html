@@ -1,0 +1,22 @@
+
+<button class="btn btn-light" (click)="openModal(modalTemplate)"><i class="fa fa-eye"></i></button>
+
+<ng-template #modalTemplate>
+    <div class="modal-header">
+        <h5 class="modal-title">{{item?.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  (click)="closeModal()">
+      </button>
+    </div>
+    <div class="modal-body">
+        <img [src]="item?.image_car" alt="{{item?.name}}" class="card-img-top">
+        <p>Body Type : {{item?.body_type}}</p>
+        <p>Description : {{item?.description}}</p>
+        <p>Engine : {{item?.engine}}</p>
+        <p>Transmission : {{item?.transmission}}</p>
+        <p>Door Count : {{item?.door_count}}</p>
+        <p>Date Online : {{item?.date_online | date:'dd.MMM.YYYY'}}</p>
+        <p>Date offline: {{item?.date_offline| date:'dd.MMM.YYYY'}} </p>
+        <p>Price : {{item?.currency}} {{item?.price}}</p>
+
+    </div>
+</ng-template>
